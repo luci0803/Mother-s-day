@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Birthday ❤️</title>
+
+<style>
+
+body{
+margin:0;
+font-family:sans-serif;
+background:black;
+color:white;
+text-align:center;
+overflow:hidden;
+}
+
+.page{
+display:none;
+height:100vh;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+}
+
+.active{
+display:flex;
+}
+
+button{
+padding:10px 20px;
+font-size:18px;
+border:none;
+border-radius:10px;
+background:pink;
+color:black;
+}
+
+img{
+width:200px;
+margin:10px;
+border-radius:10px;
+}
+
+.heart{
+position:absolute;
+font-size:30px;
+cursor:pointer;
+}
+
+.confetti{
+position:absolute;
+font-size:20px;
+animation:fall 3s linear infinite;
+}
+
+@keyframes fall{
+0%{top:-10px}
+100%{top:100vh}
+}
+
+</style>
+
+</head>
+<body>
+
+
+<audio id="music" src="music.mp3" autoplay loop></audio>
+
+
+<!-- PAGE 1 -->
+<div class="page active" id="page1">
+
+<h1>Happy birthday my lovee tulyiaaa ❤️🎉</h1>
+
+<button onclick="startIntro()">Tap to continue 💕</button>
+
+</div>
+
+
+
+<!-- PAGE 2 GAME -->
+<div class="page" id="page2">
+
+<h2>Catch my hearts ❤️</h2>
+
+<div id="gameArea"></div>
+
+</div>
+
+
+
+<!-- PAGE 3 PHOTOS -->
+<div class="page" id="page3">
+
+<h2>My favorite pics 💕</h2>
+
+<img src="photo1.jpg">
+<img src="photo2.jpg">
+<img src="photo3.jpg">
+
+<button onclick="nextPage(4)">Next ❤️</button>
+
+</div>
+
+
+
+<!-- PAGE 4 MESSAGE -->
+<div class="page" id="page4">
+
+<p>
+
+Happy birthday my lovee ❤️ <br>
+I lovee uuuuuuuuuuu soo muchh 💕 <br>
+May God bless my girl turning 14 🎂✨ <br>
+May your day go very good 😊 <br>
+Always keep smiling my girl 💖 <br>
+I love uuuu forever ♾️❤️
+
+</p>
+
+<button onclick="nextPage(5)">Next 💕</button>
+
+</div>
+
+
+
+<!-- PAGE 5 FINAL -->
+<div class="page" id="page5">
+
+<h1>
+
+Happy birthday my love ❤️ <br>
+May your day be full of happiness ✨ <br>
+Stay smiling always 😊 <br>
+I love you forever ♾️❤️
+
+</h1>
+
+</div>
+
+
+
+<script>
+
+
+function nextPage(n){
+
+document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"))
+
+document.getElementById("page"+n).classList.add("active")
+
+}
+
+
+
+function startIntro(){
+
+celebration()
+
+setTimeout(()=>{
+
+nextPage(2)
+
+startGame()
+
+},1500)
+
+}
+
+
+
+function celebration(){
+
+for(let i=0;i<30;i++){
+
+let c=document.createElement("div")
+
+c.className="confetti"
+
+c.innerHTML="🎉"
+
+c.style.left=Math.random()*100+"vw"
+
+c.style.animationDuration=2+Math.random()*3+"s"
+
+document.body.appendChild(c)
+
+}
+
+}
+
+
+
+let hearts=0
+
+function startGame(){
+
+spawnHeart()
+
+}
+
+
+
+function spawnHeart(){
+
+let h=document.createElement("div")
+
+h.className="heart"
+
+h.innerHTML="❤️"
+
+h.style.left=Math.random()*90+"vw"
+
+h.style.top=Math.random()*80+"vh"
+
+h.onclick=()=>{
+
+h.remove()
+
+hearts++
+
+if(hearts>=3){
+
+nextPage(3)
+
+}else{
+
+spawnHeart()
+
+}
+
+}
+
+document.body.appendChild(h)
+
+}
+
+
+
+</script>
+
+
+
+</bod
