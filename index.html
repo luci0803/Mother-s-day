@@ -1,0 +1,225 @@
+}
+<!DOCTYPE html>
+<html>
+<head>
+<title>Anniversary ❤️</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:black;
+color:white;
+overflow:hidden;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.page{
+display:none;
+position:absolute;
+width:100%;
+height:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+background-size:cover;
+background-position:center;
+}
+
+#p1{display:flex;}
+
+.box{
+background:rgba(0,0,0,0.6);
+padding:25px;
+border-radius:20px;
+box-shadow:0 0 20px pink;
+text-align:center;
+}
+
+button{
+padding:10px 20px;
+margin:10px;
+font-size:16px;
+border:none;
+border-radius:10px;
+}
+
+#yes{background:green;color:white;}
+#no{background:red;color:white;position:absolute;}
+
+.final{
+background:url("photo.jpg");
+background-size:cover;
+}
+
+.heart{
+position:fixed;
+top:-10px;
+animation:fall 5s linear infinite;
+}
+
+@keyframes fall{
+0%{top:-10px;}
+100%{top:100vh;}
+}
+
+canvas{
+position:fixed;
+top:0;
+left:0;
+z-index:-1;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<audio id="music" src="song.mp3"></audio>
+
+<canvas id="fw"></canvas>
+
+
+<div id="p1" class="page">
+
+<div class="box">
+
+<h1>Happy Anniversary ❤️</h1>
+
+<h2>ARBAAZ 💗 AMATULLAH</h2>
+
+<button onclick="next(2)">Start</button>
+
+<button onclick="play()">Play Song 🎵</button>
+
+</div>
+
+</div>
+
+
+
+<div id="p2" class="page">
+
+<div class="box">
+
+<h2>Do you still love me? ❤️</h2>
+
+<button id="yes" onclick="next(3)">YES</button>
+
+<button id="no">NO</button>
+
+</div>
+
+</div>
+
+
+
+<div id="p3" class="page">
+
+<div class="box">
+
+<h1>Happy 1st Anniversary ❤️</h1>
+
+<button onclick="next(4)">Next</button>
+
+</div>
+
+</div>
+
+
+
+<div id="p4" class="page final">
+
+<div class="box">
+
+<h1>ARBAAZ 💗 AMATULLAH</h1>
+
+<h2>Forever ❤️</h2>
+
+</div>
+
+</div>
+
+
+
+<script>
+
+function next(n){
+
+for(let i=1;i<=4;i++){
+document.getElementById("p"+i).style.display="none";
+}
+
+document.getElementById("p"+n).style.display="flex";
+
+}
+
+
+
+document.addEventListener("mousemove",()=>{
+
+let h=document.createElement("div");
+
+h.className="heart";
+
+h.innerHTML="❤️";
+
+h.style.left=Math.random()*100+"vw";
+
+document.body.appendChild(h);
+
+setTimeout(()=>h.remove(),4000);
+
+});
+
+
+
+let no=document.getElementById("no");
+
+no.onmouseover=function(){
+
+no.style.top=Math.random()*400+"px";
+no.style.left=Math.random()*400+"px";
+
+}
+
+
+
+function play(){
+document.getElementById("music").play();
+}
+
+
+
+let c=document.getElementById("fw");
+let ctx=c.getContext("2d");
+
+c.width=window.innerWidth;
+c.height=window.innerHeight;
+
+setInterval(()=>{
+
+let x=Math.random()*c.width;
+let y=Math.random()*c.height/2;
+
+for(let i=0;i<20;i++){
+
+ctx.fillStyle="white";
+ctx.fillRect(
+x+Math.random()*20,
+y+Math.random()*20,
+3,3
+);
+
+}
+
+},500);
+
+</script>
+
+</body>
